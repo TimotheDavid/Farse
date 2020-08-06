@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital@1&display=swap');
 body{
     margin : 0px; 
     padding: 0px;
@@ -7,4 +9,39 @@ body{
     height: 70vh;
     width: 100%;
    
+}
+
+#data{
+
+    height: 20vh;
+    width: 80%;
+    margin: auto;
+    display: flex; 
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#nom{
+    width: 80%;
+    margin: auto;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5em;
+    font-family: 'Recursive', 'sans-serif';
+
+}
+
+#sub-link{
+    margin: auto;
+    text-decoration: none;
+    font-family: 'Arvo';
+    font-size: 3vh;
+}
+
+
+
+#link{
+     text-align: center;
+   
+    
 }

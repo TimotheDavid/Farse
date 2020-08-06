@@ -10,11 +10,6 @@ var  AppMap = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.p
 });
 
 AppMap.addTo(map);
-
-
-
-console.log(point);
-
 // création du layer 
 var Layer = new L.LayerGroup();
 // ajout du layer au marker 
@@ -23,9 +18,6 @@ map.addLayer(Layer);
 
 // marker => layer => map 
 
-// marker = new L.marker(new L.latLng([48.5847543888,7.76945418478]),{icon:fountain,title:'hello'}); 
-// marker.bindPopup('hello'); 
-// Layer.addLayer(marker);
 
 
 for(let i = 0; i<data.length; i++){
@@ -38,7 +30,7 @@ for(let i = 0; i<data.length; i++){
         // création du marker
         marker = new L.marker(new L.latLng([longitude,latitude]),{icon:free_water,title:nom}); 
         // attache le marker à un popup 
-        marker.bindPopup(type);
+        marker.bindPopup(type).on('click',onclick);
         // ajout du marker au layer 
         Layer.addLayer(marker);
     }
@@ -47,7 +39,7 @@ for(let i = 0; i<data.length; i++){
         // création du marker
         marker = new L.marker(new L.latLng([longitude,latitude]),{icon:fountain,title:nom}); 
         // attache le marker à un popup 
-        marker.bindPopup(type);
+        marker.bindPopup(type).on('click',onclick);
         // ajout du marker au layer 
         Layer.addLayer(marker);
     }
@@ -56,7 +48,7 @@ for(let i = 0; i<data.length; i++){
         // création du marker
         marker = new L.marker(new L.latLng([longitude,latitude]),{icon:wc,title:nom}); 
         // attache le marker à un popup 
-        marker.bindPopup(type);
+        marker.bindPopup(type).on('click',onclick);
         // ajout du marker au layer 
         Layer.addLayer(marker);
     }
@@ -70,8 +62,14 @@ for(let i = 0; i<point.length; i++){
     let nom = point[i].nom; 
     
     marker = new L.marker(new L.latLng([latitude,longitude]),{icon:activity,title:nom}); 
-    marker.bindPopup(nom); 
+    marker.bindPopup(nom).on('click',onclick); 
     Layer.addLayer(marker);
 
     
+}
+
+function onclick(e){
+    let point = e.target.options.title;
+    let check = searching(point);
+    output(check);
 }
