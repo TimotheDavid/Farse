@@ -26,3 +26,15 @@ function output(object){
 
 
 }
+
+function currentLocation(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){
+            let marker = L.marker([position.coords.latitude,position.coords.longitude]).addTo(map);
+            marker.bindPopup("vous êtes ici").openPopup();
+        })
+    }else{
+        alert("activez la géolocalisation pour vous retrouvez");
+    }
+}
+

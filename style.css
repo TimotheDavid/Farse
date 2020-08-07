@@ -14,7 +14,7 @@ body{
 #data{
 
     height: 20vh;
-    width: 80%;
+    width: 85%;
     margin: auto;
     display: flex; 
     justify-content: space-around;
@@ -22,11 +22,11 @@ body{
 }
 
 #nom{
-    width: 80%;
+    width: 100%;
     margin: auto;
     font-size: 20px;
     text-align: center;
-    line-height: 1.5em;
+    line-height: 1.2em;
     font-family: 'Recursive', 'sans-serif';
 
 }
@@ -44,4 +44,37 @@ body{
      text-align: center;
    
     
+}
+
+.social{
+    height: 50px;
+    width: 50px;
+}
+
+#reseaux{
+    margin: auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+footer{
+    margin: 2%;
+    margin: auto;
+    display: flex;
+    align-self: center;
+
+}
+
+a{
+    margin: auto;
+
+
+}
+
+#site{
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid black;
 }

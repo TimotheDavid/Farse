@@ -9,6 +9,9 @@ var  AppMap = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.p
 	attribution: '&copy; Openstreetmap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 });
 
+
+
+
 AppMap.addTo(map);
 // création du layer 
 var Layer = new L.LayerGroup();
@@ -17,6 +20,8 @@ map.addLayer(Layer);
 
 
 // marker => layer => map 
+// control search layer 
+
 
 
 
@@ -73,3 +78,9 @@ function onclick(e){
     let check = searching(point);
     output(check);
 }
+
+
+
+
+
+// currentLocation();
