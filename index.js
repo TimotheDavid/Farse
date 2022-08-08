@@ -33,7 +33,7 @@ const typePoint = [
     },
     {
         name: 'point_eau_temporaire',
-        icon: fountain,
+        icon: free_water,
         def: 'point d\'eau temporaire'    
     },
     {
