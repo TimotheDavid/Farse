@@ -1,6 +1,8 @@
 
 let data = data_eau; 
-let point = point_data; 
+let point = point_data;
+
+
 
 var map = L.map('map').setView([48.5833, 7.75], 13);
 
@@ -23,41 +25,41 @@ map.addLayer(Layer);
 // control search layer 
 
 
+const typePoint = [
+    {
+        name: 'toilette_publique',
+        icon: wc,
+        def: 'toilette publique' 
+    },
+    {
+        name: 'point_eau_temporaire',
+        icon: fountain,
+        def: 'point d\'eau temporaire'    
+    },
+    {
+        name: 'fontaine',
+        icon: fountain,    
+        def: 'fontaine'
+    },
+    {
+        name: 'ilot_fraicheur',
+        icon: oasis,  
+        def: 'ilot de fraicheur' 
+    }
+  ]
+
 
 
 for(let i = 0; i<data.length; i++){
     let latitude = data[i].geometry.coordinates[0];
     let longitude = data[i].geometry.coordinates[1];
-    let nom = data[i].fields.localisation; 
+    let nom = data[i].fields.adresse; 
     let type = data[i].fields.type; 
+    let recordId = data[i].recordid;
+    
+    let filteredType = typePoint.filter(point => point.name == type)[0];
 
-    if(type == 'Point d\'eau temporaire'){
-        // création du marker
-        marker = new L.marker(new L.latLng([longitude,latitude]),{icon:free_water,title:nom}); 
-        // attache le marker à un popup 
-        marker.bindPopup(type).on('click',onclick);
-        // ajout du marker au layer 
-        Layer.addLayer(marker);
-    }
-
-    if(type == 'Fontaine'){
-        // création du marker
-        marker = new L.marker(new L.latLng([longitude,latitude]),{icon:fountain,title:nom}); 
-        // attache le marker à un popup 
-        marker.bindPopup(type).on('click',onclick);
-        // ajout du marker au layer 
-        Layer.addLayer(marker);
-    }
-
-    if(type == 'Toilettes publiques'){
-        // création du marker
-        marker = new L.marker(new L.latLng([longitude,latitude]),{icon:wc,title:nom}); 
-        // attache le marker à un popup 
-        marker.bindPopup(type).on('click',onclick);
-        // ajout du marker au layer 
-        Layer.addLayer(marker);
-    }
-
+    addPoint(filteredType.icon, latitude, longitude,filteredType.def, type, filteredType.name, recordId);
 }
 
 
@@ -66,16 +68,30 @@ for(let i = 0; i<point.length; i++){
     let longitude = point[i].geo_points[1]; 
     let nom = point[i].nom; 
     
-    marker = new L.marker(new L.latLng([latitude,longitude]),{icon:activity,title:nom}); 
+    marker = new L.marker(new L.latLng([latitude,longitude]),{icon:activity,title:nom, type: 'activity'}); 
     marker.bindPopup(nom).on('click',onclick); 
     Layer.addLayer(marker);
 
     
 }
 
+function addPoint(icon, latitude, longitude, def, type,nom, recordId) {
+     // création du marker
+     marker = new L.marker(new L.latLng([longitude,latitude]),{icon:icon,title:def, data:recordId, type: 'data'}); 
+    
+     // attache le marker à un popup 
+     marker.bindPopup(def).on('click',onclick);
+     // ajout du marker au layer 
+     Layer.addLayer(marker);
+}
+
 function onclick(e){
-    let point = e.target.options.title;
-    let check = searching(point);
+    let point = e.target.options.data;
+    let nom = e.target.options.title;
+    let type = e.target.options.type
+
+    
+    let check = searching(point, nom, type);
     output(check);
 }
 

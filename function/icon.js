@@ -24,3 +24,8 @@ let activity = L.icon({
 
 })
 
+
+let oasis = L.icon({
+	iconUrl: './img/palm-tree.png',
+	iconSize: [25, 25]
+})

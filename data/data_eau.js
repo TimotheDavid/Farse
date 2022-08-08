@@ -1,4 +1,4 @@
-﻿data_eau = [
+﻿const data_eau = [
   {
     "datasetid": "plan_canicule",
     "recordid": "026bb27d88bc2767053ae686a7d008bee5aec8eb",
