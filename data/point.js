@@ -136,5 +136,12 @@ point_data = [
         "address": "Rue Martin Luther",
         "url": "https://farse.strasbourg.eu/programme/?_sfm_lieu=3359",
         "geo_points": [48.579554, 7.745086], 
+    },
+    {
+        "id": 24,
+        "nom": "Passerelle Camille Claudel",
+        "address": "Passerelle Camille Claudel",
+        "url": "https://farse.strasbourg.eu/programme/?_sfm_lieu=551",
+        "geo_points": [48.573750, 7.762580]
     }
 ]
