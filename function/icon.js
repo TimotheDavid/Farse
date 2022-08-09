@@ -11,7 +11,7 @@ let free_water = L.icon({
 
 
 let wc = L.icon({
-	iconUrl:'./img/wc.png', 
+	iconUrl:'./img/restroom.png', 
 	iconSize: [20,20]
 
 })
